@@ -1,0 +1,28 @@
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  arm_controller:
+    type: position_controllers/JointTrajectoryController
+    joints:
+      - joint_base_rockbreaker
+      - joint_brazoa
+      - joint_brazob
+      - joint_hammer
+    
+    controller_list:
+    - name: arm_controller
+      action_ns: follow_joint_trajectory
+      type: FollowJointTrajectory
+      default: true
+      joints:
+        - joint_base_rockbreaker
+        - joint_brazoa
+        - joint_brazob
+        - joint_hammer
+    
+
+    state_publish_rate:  25            # Override default
+    action_monitor_rate: 30            # Override default
+    stop_trajectory_duration: 0        # Override default
+    
